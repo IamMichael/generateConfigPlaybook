@@ -1,0 +1,7 @@
+# 生成的目标配置文件目录,目录最后必须为generatedConfig
+generated_config_dir: "/mnt/generatedConfig"
+
+# 配置文件中抽取的变量
+#
+xxx: 111
+yyy: 222

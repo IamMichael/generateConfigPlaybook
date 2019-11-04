@@ -1,0 +1,3 @@
+[all]
+h_localhost  ansible_ssh_host=127.0.0.1 ansible_ssh_pass='123456' ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+

@@ -1,0 +1,37 @@
+---
+
+- name: "Check Config Parent Folder Variable"
+  meta: end_play
+  when: generated_config_dir is not search("/.*/generatedConfig")
+
+
+- name: "Create Config Parent Folder"
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+  with_items:
+    - "{{ generated_config_dir }}"
+
+
+- name: "Clear Original Config File"
+  shell: "rm -rf {{ generated_config_dir }}/*"
+  when: generated_config_dir is search("/.*/generatedConfig")
+
+
+- name: "Create Dest Config Folder"
+  file:
+    state: directory
+    dest: '{{ generated_config_dir }}/{{ item.path }}'
+  with_filetree: '../templates'
+  when: item.state == 'directory'
+
+
+- name: "Generate Dest Config File"
+  template:
+    src: '{{ item.src }}'
+    dest: '{{ generated_config_dir }}/{{ item.path }}'
+  with_filetree: '../templates'
+  when: item.state == 'file'
+
+
