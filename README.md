@@ -1,2 +1,2 @@
 # generateConfigPlaybook
-A demon for Config  generatation
+A demon for config  generatation
